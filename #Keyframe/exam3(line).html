@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Animation 효과 (line load)</title>
+    <style>
+        @keyframes line-grow {
+            0% {
+                transform: scaleX(0); 
+                transform-origin: left; 
+            }
+            25% { /* 1초 */
+                transform: scaleX(1); /* 그려지는 것 */
+                transform-origin: left; /* 왼쪽에서 오는 방향 */
+            }
+            25.1% {
+                transform: scaleX(1); /* 이어서 그려지는 것 */
+                transform-origin: right; /* 오른쪽으로 사라지는 방향 */
+            }
+            50% { /* 2초 (100% = 4초) */
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            border: 1px solid #3d1aff;
+        }
+
+        .bar {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .bar::before { 
+            position: absolute;
+            content: ''; 
+            width: 100%;
+            height: 2px;
+            background-color: #3d1aff;
+            animation: line-grow 4s linear infinite; /* linear : 선이 부드럽게 표현 */
+            transform: scale(0);
+        }
+
+        .box .bar:nth-child(2) {
+            transform: rotate(90deg); 
+        }
+        .box .bar:nth-child(2)::before {
+            animation-delay: 1s; /* 애니메이션 지연 효과 */
+        }
+
+        .box .bar:nth-child(3) {
+            transform: rotate(180deg); 
+        }
+        .box .bar:nth-child(3)::before {
+            animation-delay: 2s; 
+        }
+
+        .box .bar:nth-child(4) {
+            transform: rotate(270deg); 
+        }
+        .box .bar:nth-child(4)::before {
+            animation-delay: 3s; 
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+    내용이 추가되었습니다.
+</body>
+</html>
+
+
+
+

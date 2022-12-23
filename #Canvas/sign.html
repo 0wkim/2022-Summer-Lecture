@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas-5</title>
+    <style>
+        canvas {border: 5px solid black; margin-top: 10px;}
+    </style>
+</head>
+<body>
+    <div>
+        색상 : 
+        <select id="selcolor">
+            <option value="black">검정</option>
+            <option value="red">빨강</option>
+            <option value="green">초록</option>
+            <option value="blue">파랑</option>
+            <option value="magenta">분홍</option>
+        </select>
+
+        굵기 :
+        <select id="selwidth">
+            <option value="1">얇게</option>
+            <option value="2">중간</option>
+            <option value="3">굻게</option>
+        </select>
+
+        <button id="clear">모두 지움</button>
+    </div>
+
+    <canvas id="canvas" width="1000" height="600"></canvas>
+
+    <script>
+        let canvas 
+        let ctx 
+        let sx, sy // 현재 위치
+        let drawing = false // 현재 그리는 중인지 판별
+
+        window.onload = () => {
+            canvas = document.querySelector('#canvas')
+            ctx = canvas.getContext('2d')
+            ctx.lineCap='round'// 둥근 펜촉과 같은 느낌 적용
+
+            // 현재 위치를 저장
+            canvas.onmousedown = e => {
+                e.preventDefault()
+                sx = canvasX(e.clientX)
+                sy = canvasY(e.clientY)
+                drawing = true
+            }
+
+            // 현재 위치에서 새로 이동한 곳까지 선을 그리기
+            canvas.onmousemove = e => {
+                if(drawing){
+                    e.preventDefault()
+                    ctx.beginPath()
+                    ctx.moveTo(sx, sy)
+                    sx = canvasX(e.clientX)
+                    sy = canvasY(e.clientY)
+                    ctx.lineTo(sx, sy)
+                    ctx.stroke()
+                }
+            }
+
+            // 그리기 종료 (마우스를 땠을 때 선 멈추기)
+            canvas.onmouseup = e => {
+                drawing = false
+            }
+        }
+
+        // 모두 지우기
+        let btnClear = document.querySelector('#clear')
+        btnClear.onclick = e => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height) // 캔버스 크기만큼의 투명 사각형으로 덮어씌우는 것
+        }
+
+        // 선 색상 변경
+        let selcolor = document.querySelector('#selcolor')
+        selcolor.onchange = e => {
+            ctx.strokeStyle = selcolor.value
+        }
+
+        // 선 굵기 변경
+        let selwidth = document.querySelector('#selwidth')
+        selwidth.onchange = e => {
+            ctx.lineWidth = selwidth.value
+        }
+
+        // canvasX, canvasY 함수
+        function canvasX(clientX) {
+            let bound = canvas.getBoundingClientRect()
+            let bw = 5 
+            return (clientX - bound.left - bw) * (canvas.width / (bound.width - bw * 2))
+        }
+
+        function canvasY(clientY) {
+            let bound = canvas.getBoundingClientRect()
+            let bw = 5 
+            return (clientY - bound.top - bw) * (canvas.height / (bound.height - bw * 2))
+        }
+    </script>
+</body>
+</html>

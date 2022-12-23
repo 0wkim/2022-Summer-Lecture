@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 1440px;
+  margin: 0 auto;
+}
+
+#container > h2 {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+#container > h4 {
+  padding: 20px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont1 {
+  display: grid; 
+  grid-template-columns: repeat(5, 1fr); 
+  grid-auto-rows: minmax(200px, auto); 
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 20px 20px 60px 20px;
+  width: 250px;
+  height: 400px;
+  position: relative;
+}
+
+.box > .img {
+  position: absolute;
+  top: 0px;
+  width: 250px;
+  height: 270px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btm {
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  bottom: 0;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 0 20px 0 #ddd;
+  z-index: 10;
+}
+
+.btm > h5 {
+  font-weight: bold;
+  padding: 10px;
+}
+
+.btm > .price {
+  position: absolute;
+  color: #888;
+  font-size: 18px;
+  top: 40px;
+  left: 10px;
+}
+
+.btm > .star {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.btm > .star1 > i:nth-child(1),
+.btm > .star1 > i:nth-child(2) {
+  color: #ffa023;
+}
+
+.btm > .star2 > i:nth-child(1),
+.btm > .star2 > i:nth-child(2),
+.btm > .star2 > i:nth-child(3),
+.btm > .star2 > i:nth-child(4),
+.btm > .star2 > i:nth-child(5) {
+  color: #ffa023;
+}
+
+.btm > .star3 > i:nth-child(1),
+.btm > .star3 > i:nth-child(2),
+.btm > .star3 > i:nth-child(3),
+.btm > .star3 > i:nth-child(4) {
+  color: #ffa023;
+}
+
+.btm > .star4 > i:nth-child(1),
+.btm > .star4 > i:nth-child(2),
+.btm > .star4 > i:nth-child(3),
+.btm > .star4 > i:nth-child(4),
+.btm > .star4 > i:nth-child(5) {
+  color: #ffa023;
+}
+
+.btm > .star5 > i:nth-child(1),
+.btm > .star5 > i:nth-child(2),
+.btm > .star5 > i:nth-child(3) {
+  color: #ffa023;
+}
+
+.btm > .star > .star-icon {
+  font-size: 16px;
+  margin: -3px;
+}
+
+.btm > .review {
+  position: absolute;
+  color: #888;
+  font-size: 18px;
+  bottom: -5px;
+  right: 10px;
+}
+
+.cont2 {
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  grid-auto-rows: minmax(200px, auto); 
+}
+
+.cont2-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin: 20px;
+  border-radius: 10px;
+  width: 325px;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cont2-box > .img {
+  width: 325px;
+  height: 500px;
+  background: black;
+}
+
+.cont2-box > .img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.cont2-box > h5 {
+  position: absolute;
+  color: white;
+  bottom: 155px;
+  left: 20px;
+}
+
+.cont2-box > .price {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  bottom: 110px;
+  left: 20px;
+}
+
+.cont2-box > .date {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  bottom: 75px;
+  left: 20px;
+}
+
+.cont2-box .button {
+  position: absolute;
+  bottom: 20px;
+  z-index: 10;
+  width: 290px;
+  height: 55px;
+  font-size: 20px;
+  border: none;
+  background-color: #5466ce;
+}

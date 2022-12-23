@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Animation 효과 (beat)</title>
+    <style>
+        @keyframes beat { /* 'beat'라는 이름의 애니메이션 제작 */
+            0% { /* %로 애니메이션의 시점 구분 */
+                transform: scale(0.5); /* 크기를 0.5 비율로 변형 */
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(0.5);
+            }
+        }
+
+        .beatDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: beat 1s infinite; /* 애니메이션 이름, 재생 간격, 무한 반복 */
+        }
+    </style>
+</head>
+<body>
+    <div class="beatDiv"></div>
+</body>
+</html>

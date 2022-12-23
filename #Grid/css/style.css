@@ -1,0 +1,42 @@
+.box {
+    background-color: rgba(150, 23, 84, 0.5);
+    border: 1px solid #ddd;
+    /* height: 250px; : box의 높이가 gird 높이보다 크더라도 auto 사용 시 자동 적용 */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+/* column : 가로 */
+/* row : 세로 */
+
+.box:nth-child(1) { /* 병합할 셀 지정 */
+    grid-column-start: 1; /* 시작지점 (grid 번호) */
+    grid-column-end: 4; /* 종료지점 */
+}
+
+.box:nth-child(2) {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.box:nth-child(4) {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+.wrapper {
+    display: grid; /* .box의 상위 속성인 .wrapper에 gird 적용 */
+
+    /* grid-template 속성 */
+    /* 1. 33.33% 33.33% 33.33%; -> 3등분으로 분할 */
+    /* 2. 400px 1fr 1fr; -> 400px : 1 : 1 (fr = 비율) */
+    /* 3. 200px repeat(2, 1fr) 20% -> repeat : 반복 */
+
+    grid-template-columns: repeat(3, 1fr); /* 가로 */
+    grid-auto-rows: minmax(200px, auto); /* 세로 자동 계산 (최소, 최대) */
+}
